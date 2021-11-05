@@ -1,8 +1,10 @@
+@import url("https://fonts.google.com/specimen/Roboto");
+
 body {
   /* background-image: URL('./icons/ella-olsson-C1Q3qOTlegg-unsplash.jpg'); */
   background-color: #eeecef;
   margin: 0;
-  font-family: "Verdana";
+  font-family: "Roboto";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

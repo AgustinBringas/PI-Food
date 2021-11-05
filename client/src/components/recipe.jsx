@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom'
 import './recipe.css'
 
 export default function Recipe(params) {
-    const { name, image, diets, id } = params.recipe
+    let { name, image, diets, id } = params.recipe
+    if (name.length > 20) {
+        name = name.slice(0, 20) + "..."
+    }
     return (
         
             <div className="card-container">
