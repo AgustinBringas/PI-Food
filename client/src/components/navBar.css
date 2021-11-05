@@ -1,0 +1,63 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    height: 80px;    
+    background-color: white;
+    color: black;
+    border-bottom: 1px solid #fbb217;
+    z-index: 3;
+}
+  
+.nav-container {
+    display: flex;
+    justify-content: flex-start;
+    height: 80px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 15px;
+    
+    
+
+}
+
+
+
+#logoHenry {
+    margin-right: 50px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.nav-items {
+    float: right;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: 600px;
+    text-align: left;
+    z-index: 4;
+}
+
+.nav-items li {
+    display: inline-block;
+    line-height: 56px;
+    margin: 0 25px
+}
+
+.nav-items li .link {
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.nav-items li .link:hover{
+    color: lightblue;
+    border-bottom: 2px solid lightblue;
+}

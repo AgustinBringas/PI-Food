@@ -1,0 +1,13 @@
+body {
+  /* background-image: URL('./icons/ella-olsson-C1Q3qOTlegg-unsplash.jpg'); */
+  background-color: #eeecef;
+  margin: 0;
+  font-family: "Verdana";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

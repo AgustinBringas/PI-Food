@@ -1,0 +1,29 @@
+.paginado {
+    list-style: none;
+    width: fit-content;
+    height: 40px;
+    padding: 0px;
+    background-color: rgba(54, 166, 218, 0.1);
+    border-radius: 5px;
+    margin-bottom: 60px;
+}
+.number {
+    display: inline-block;
+    margin: 5px;
+    font-size: 20px;
+
+    border-radius: 5px;
+    background-color: rgba(54, 166, 218, 0.1);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+.number:hover {
+    transform: translateY(1px);
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3)
+}
+
+.paginado-container {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,31 @@
+.search-bar {
+    position: relative;
+    margin-top: 5px;
+    padding: 5px 10px 5px 20px;
+    width: 250px;
+    height: 40px;
+    border-color: black;
+    border-style: solid;
+    font-size: 22px;
+    color: rgb(77, 173, 206);
+    border-radius: 10px;
+    align-items: center;
+    float: right;
+    z-index: 4;
+    margin-left: 800px;
+}
+
+#submit-btn {
+    position: relative;
+    left: 1080px;
+    margin-top: 13px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 50%;
+    float: right;
+    background-color: white;
+    cursor: pointer;
+    z-index: 5;
+    border: none;
+}

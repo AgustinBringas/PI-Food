@@ -1,0 +1,72 @@
+#all-form {
+    width: 100%;
+    height: 1100px;
+    background-image: url(../icons/pattern.png);
+}
+
+.form-container {
+    display:flex;
+    align-items: center;
+    flex-flow: column wrap;
+}
+
+.create-form {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid black;
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+
+} 
+
+.form-input {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+
+.input-create {
+    margin-left: 6px;
+    margin-top: 2px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+.form-input .checkboxs-diets {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+input[type='number'] {
+    width: 30px
+}
+
+
+
+.submit-btn {
+    width: 60%;
+    margin: 0px 5px 8px 5px;
+    align-self: center;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.submit-btn:hover:enabled {
+    transform: translateY(2px);
+    transform: translateX(2px);
+    box-shadow: 2px 2px 26px 0px rgba(0, 0, 0, 0.3)
+}
+
+.submit-btn:disabled {
+    cursor: not-allowed;
+}

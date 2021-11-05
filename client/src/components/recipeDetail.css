@@ -1,0 +1,110 @@
+#all-detail {
+    width: 100%;
+    height: 100%;
+    background-image: url(../icons/pattern.png);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.detail-container {
+    background-color: rgba(255, 255, 255, 0.94);
+    width: 70%;
+    height: auto;
+    display: grid;
+    grid-template: 
+                    ". title ."  auto
+                    "spScore img diets"  auto
+                    "htScore img dishes"  auto
+                    ". img ."  auto
+                    "summary summary summary"  auto
+                    ". steps ."  auto
+                    ". instructions ."  auto;
+    align-items: center;
+    grid-template-columns: auto auto auto;
+    justify-items: center;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    border-radius: 30px;
+}
+
+#img {
+    grid-area: img;
+    align-self: center;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+#title {
+    grid-area: title;
+}
+
+#diets {
+    grid-area: diets;
+    background-color: rgba(7, 103, 148, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius:5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 25px;
+}
+
+#dishes {
+    grid-area: dishes;
+    background-color: rgba(7, 103, 148, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius:5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 25px;
+}
+
+#summary {
+    grid-area: summary;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: black;
+}
+
+#steps {
+    grid-area: steps;
+    margin-right: 500px;
+}
+
+#spoon-score {
+    grid-area: spScore;
+}
+
+#health-score {
+    grid-area: htScore;
+}
+
+#instructions {
+    grid-area: instructions;
+}
+
+.instruction-number {
+    background-color: aqua;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    grid-area: number;
+}
+
+.instruction-info {
+    grid-area: info;
+}
+
+.instruction-container {
+    display: grid;
+    grid-template: 
+                    "number info";
+    grid-template-columns: 5% 95%;
+
+}
