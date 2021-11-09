@@ -35,4 +35,16 @@ router.post('/:idRecipe/diet/:idDiet', async (req, res, next) => {
     }
 })
 
+router.delete('/:idRecipe', (req, res, next) => {
+    try {
+        const { idRecipe } = req.params
+        Recipe.destroy({ where: {id: idRecipe} })
+        .then(recipe => console.log(recipe))
+        res.send('Deleted ' + idRecipe)
+        
+    } catch(error) {
+        next(error)  // Va al proximo middleware que es el de manejo de errores
+    }
+})
+
 module.exports = router;

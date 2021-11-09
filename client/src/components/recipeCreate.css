@@ -1,7 +1,13 @@
 #all-form {
     width: 100%;
-    height: 1100px;
+    height: 1200px;
     background-image: url(../icons/bg-home.jpg);
+}
+
+.all-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-container {
@@ -34,8 +40,63 @@
 .input-create {
     margin-left: 6px;
     margin-top: 2px;
-    border-radius: 5px;
-    border: 1px solid;
+    border: none;
+    border-bottom: 2px solid #ef7f3f;
+}
+
+.input-create:focus {
+    outline: none;
+}
+
+.input-create-number {
+    margin-left: 6px;
+    margin-top: 2px;
+    border: none;
+    border-bottom: 2px solid #ef7f3f;
+    text-align: center;
+    width: 70px;
+}
+
+.input-create-number:focus {
+    outline: none;
+}
+
+.anInstructions {
+    margin-left: 6px;
+    margin-top: 2px;
+    border: none;
+    border-bottom: 2px solid #ef7f3f;
+    text-align: center;
+    width: 70px;
+    margin-right: 10px;
+}
+
+.anInstructions:focus {
+    outline: none;
+}
+
+.remove-btn {
+    margin-left: 20px;
+}
+
+.remove-btn, .add-btn {
+    cursor: pointer;
+}
+
+.btn-increment, .btn-decrement, .remove-btn, .add-btn  {
+    background-color: white;
+    border: none;
+    font-size: 23px;
+    font-weight: 500;
+    height: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .form-input .checkboxs-diets {
@@ -46,9 +107,21 @@
     align-items: flex-start;
 }
 
-input[type='number'] {
-    width: 30px
+.form-input-summary {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
+
+textarea {
+    margin-top: 5px;
+    border-radius: 10px;
+    border-color: #ef7f3f;
+    border-width: 2px;
+}
+
 
 
 
@@ -70,4 +143,47 @@ input[type='number'] {
 
 .submit-btn:disabled {
     cursor: not-allowed;
+}
+
+
+.error {
+    color: red;
+    margin-left: 10px;
+}
+
+.title-create {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    border-bottom: 5px;
+}
+.cooking-guy {
+    margin-left: 5px;
+}
+
+#sub-text {
+    margin-left: 10px;
+    width: 170px;
+    height: 3px;
+    background-color: #a7cb68;
+    border-radius: 3px;
+
+}
+
+.input-label-create {
+    cursor: default;
+}
+
+
+.cb {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.cb-container {
+    display: flex;
+}
+
+.card-created {
+    pointer-events: none;
 }

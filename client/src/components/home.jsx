@@ -7,16 +7,7 @@ import Paginado from './paginado'
 import './home.css'
 import LoadingKiwi from '../icons/loadingKiwi'
 import AvocadoNotFound from '../icons/notMatch'
-import Dairyfree from '../icons/diet-icons/dairyFree'
-import Fodmap from '../icons/diet-icons/fodmap'
-import Glutenfree from '../icons/diet-icons/glutenFree.jsx'
-import Keto from '../icons/diet-icons/ketos.jsx'
-import Lactovoveg from '../icons/diet-icons/lactovoVeg'
-import Paleo from '../icons/diet-icons/paleo'
-import Pesca from '../icons/diet-icons/pesca'
-import Primal from '../icons/diet-icons/primal'
-import Vegan from '../icons/diet-icons/vegan'
-import Whole from '../icons/diet-icons/whole'
+import * as icons from '../icons/diet-icons/DietIcons'
 
 
 export default function Home (props) {
@@ -35,6 +26,19 @@ export default function Home (props) {
     const recipeCheckboxes = document.querySelectorAll('input[type="checkbox"]')
     // Un estado solo para renderizar
     const [render, setRender] = useState('')
+    // Objeto para renderizar iconos
+    const components = {
+        glutenfree: icons.Glutenfree,
+        dairyfree: icons.Dairyfree,
+        ketogenic: icons.Keto,
+        lactoovovegetarian: icons.Lactovoveg,
+        vegan: icons.Vegan,
+        pescatarian: icons.Pesca,
+        paleolithic: icons.Paleo,
+        primal: icons.Primal,
+        fodmapfriendly: icons.Fodmap,
+        whole30: icons.Whole
+    }
     
     // Apenas carga la pagina me traigo las recetas y las dietas
     useEffect(() => {
@@ -89,6 +93,7 @@ export default function Home (props) {
         setCurrentPage(1)
         setRender(render + 'a')
     }
+    
     return (
         
         <div className='all'>
@@ -96,13 +101,9 @@ export default function Home (props) {
             <div className='filters-container'>
                 <div className='checkbox-diets'>
                     {diets.map((diet, index) => {
-                        console.log(diet.image)
+                        const SpecificImg = components[diet.name.replace(/\s+/g, '')]
                         return (
                             <div className='box-diet'>
-                                {diet.image ? 
-                                React.createElement(diet.image)
-                                : null}
-                                
                                 <input 
                                 className='checkbox'
                                 type="checkbox" 
@@ -110,7 +111,12 @@ export default function Home (props) {
                                 value={diet.name}
                                 onChange={() => dietFilter()}
                                 /> 
-                                <label for={`diet-cb-${index}`}>{diet.name.toUpperCase()}</label>
+                                <label for={`diet-cb-${index}`}>
+                                    {diet.name.toUpperCase()}
+                                    {SpecificImg ? 
+                                    <SpecificImg width={32} height={32}/>
+                                    : null}
+                                </label>
                             </div>
                         )
                     })}
@@ -120,29 +126,28 @@ export default function Home (props) {
             
             <div className='options'>
                 <div className='order-container'>
-                    <select id='order-type' onChange={(e) => handleOrder(e)}>
-                        <option hidden selected value='asc'>Order type</option>
+                    <select id='order-type' onChange={(e) => handleOrder(e)} defaultValue="Order type">
+                        <option hidden value='asc'>Order type</option>
                         <option value='asc'>Ascendant</option>
                         <option value='desc'>Descendant</option>
                     </select>
                 </div>
                 <div className='order-container'>
-                    <select id='order-by' onChange={(e) => handleOrder(e)}>
-                        <option hidden selected value='name'>Order by</option>
+                    <select id='order-by' onChange={(e) => handleOrder(e)} defaultValue="Order by">
+                        <option hidden value='name'>Order by</option>
                         <option value='name'>Name</option>
                         <option value='healthScore'>Score</option>
                     </select>
                 </div>
                 <div className='order-container'>
-                    <select id='show' onChange={(e) => handleFilterCreated(e)}>
-                        <option hidden selected value='all'>Show</option>
+                    <select id='show' onChange={(e) => handleFilterCreated(e)} defaultValue="Show">
+                        <option hidden value='all'>Show</option>
                         <option value="all">All</option>
                         <option value="created">My Recipes only</option>
                         <option value="api">Page only</option>
                     </select>
                 </div>
             </div>
-            <keto />
             {!allRecipes.length
             ? 
             <div className='loading-container'>
@@ -153,7 +158,8 @@ export default function Home (props) {
             recipes.length ?
             <div id='recipes' className='recipes-container'>
                 {currentRecipes.map(recipe => {
-                    return <Recipe recipe={recipe}/>
+                    let dietIcons = recipe.diets.map(diet => components[diet.replace(/\s+/g, '')])
+                    return <Recipe recipe={recipe} icons={dietIcons}/>
                 })}
             </div>
             :

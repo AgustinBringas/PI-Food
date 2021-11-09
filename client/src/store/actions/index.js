@@ -9,6 +9,7 @@ export const ADD_RECIPE = 'ADD_RECIPE'
 export const ADD_DIET = 'ADD_DIET'
 export const ADD_DIETS_TO_RECIPE = 'ADD_DIETS_TO_RECIPE'
 export const CLEAR = 'CLEAR'
+export const DELETE_RECIPE = 'DELETE_RECIPE'
 
 export function getRecipes(name) {
     if(name) {
@@ -80,7 +81,7 @@ export function order(payload){
     }
 }
 
-export function addRecipe(payload) {
+export function addRecipe(payload, history) {
     return function(dispatch) {
         fetch('http://localhost:3001/api/recipe', {
             method: 'POST',
@@ -100,27 +101,12 @@ export function addRecipe(payload) {
                 })
             });
             Promise.all(promises).then(dispatch({type: ADD_RECIPE, payload: json}))
-            
-            
+            history.push("/recipe/" + idRecipe)
         })
-
     }
 }
     
     
-
-export function addDiet(payload) {
-    return function(dispatch) {
-        fetch('http://localhost:3001/api/diets', {
-            method: 'POST',
-            body: payload
-        })
-        .then(response => response.json())
-        .then(json => dispatch({type: ADD_DIET, payload: json}))
-
-    }
-}
-
 export function addDietsToRecipe(payload) {
     return function(dispatch) {
         fetch(`http://localhost:3001/api/recipe/${payload.recipeId}/diet/${payload.dietId}`, {
@@ -136,5 +122,15 @@ export function addDietsToRecipe(payload) {
 export function clear() {
     return {
         type: CLEAR
+    }
+}
+
+export function deleteRecipe(payload) {
+    return async function(dispatch) {
+        console.log('Llego al action')
+        await fetch(`http://localhost:3001/api/recipe/${payload}`, {
+            method: 'DELETE'
+        })
+        dispatch({type: DELETE_RECIPE, payload})
     }
 }

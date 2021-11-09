@@ -1,14 +1,17 @@
 import { React, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clear, getRecipesDetail } from '../store/actions'
+import { clear, getRecipesDetail, deleteRecipe } from '../store/actions'
 import  NavBar  from './navBar'
 import LoadingKiwi from '../icons/loadingKiwi'
 import './recipeDetail.css'
+import { useHistory } from 'react-router'
+
 
 export default function RecipeDetail(props) {
     const id = props.match.params.id
     let recipeDetail = useSelector(state => state.recipeDetail)
     let dispatch = useDispatch()
+    const history = useHistory()
 
     useEffect(() => {
         dispatch(getRecipesDetail(id))
@@ -16,6 +19,11 @@ export default function RecipeDetail(props) {
             dispatch(clear())
         }
     }, [])
+
+    function removeRecipe(e) {
+        dispatch(deleteRecipe(recipeDetail.id))
+        history.push('/home')
+    }
     return (
         <div id="all-detail">
             <NavBar search={false}/>
@@ -44,6 +52,8 @@ export default function RecipeDetail(props) {
                     }): <p>"There are no instructions for this recipe."</p>
                     }
                 </div>
+                {recipeDetail.id.length > 16 ? <button className='remove-btn' onClick={e => removeRecipe(e)}> X</button> : null}
+                
             </div>}
 
         </div>

@@ -5,9 +5,9 @@ import  {GET_RECIPES,
          FILTER_CREATED,
          ORDER,
          ADD_RECIPE,
-         ADD_DIET,
          ADD_DIETS_TO_RECIPE,
-         CLEAR } from "../actions"
+         CLEAR,
+         DELETE_RECIPE } from "../actions"
 
 const initialState = {
     allRecipes: [],
@@ -92,16 +92,19 @@ export default function reducer(state=initialState, action) {
                 ...state,
                 recipes: [...state.recipes, action.payload]
             }
-        case ADD_DIET:
-            return {
-                ...state,
-                diets: [...state.diets, action.payload]
-            }
         case CLEAR: 
             return {
                 ...state,
                 recipeDetail: {}
             }
+        case DELETE_RECIPE: 
+            console.log('Llego al reducer')
+            let recipes = state.recipes.filter(recipe => recipe.id !== action.payload)
+            return {
+                ...state,
+                recipes: recipes
+            }
+        
         default:
             return state
     }

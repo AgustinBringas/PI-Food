@@ -9,31 +9,26 @@ router.get('/types', async (req, res, next) => {
     try {
         let diets = await Diet.findAll()
         if (diets.length === 0) {
-            let defaultDiets = [{name:"gluten free", img:"GlutenFree"}, 
-                                {name:"dairy free", img:"DairyFree"}, 
-                                {name:"ketogenic", img:"Keto"}, 
-                                {name:"lacto ovo vegetarian", img:"LactovoVeg"}, 
-                                {name:"vegan", img:"Vegan"}, 
-                                {name:"pescatarian", img:"Pesca"}, 
-                                {name:"paleolithic", img:"Paleo"}, 
-                                {name:"primal", img:"Primal"}, 
-                                {name:"fodmap friendly", img:"Fodmap"}, 
-                                {name:"whole 30", img:"Whole"}];
+            let defaultDiets = ["gluten free",
+                                "dairy free",          
+                                "ketogenic",           
+                                "lacto ovo vegetarian",
+                                "vegan",               
+                                "pescatarian",         
+                                "paleolithic",         
+                                "primal",              
+                                "fodmap friendly",     
+                                "whole 30"];
 
             let promisesDiets = []
             defaultDiets.forEach((diet) => {
                 promisesDiets.push(Diet.create({
-                    name: diet.name,
-                    image: diet.img
+                    name: diet
                 }))
             });
             Promise.all(promisesDiets).then((value) => {
                 Diet.findAll().then(diets => {
-                    let arrayReturn = diets.map(diet => {
-                        return {name: diet.dataValues.name, img: diet.dataValues.image}
-                    })
-                    console.log("Llegue aca: ", arrayReturn)
-                    return res.send(arrayReturn)
+                    return res.send(value)
                 })
             })
         } else {
@@ -43,6 +38,5 @@ router.get('/types', async (req, res, next) => {
         next(error)
     }
 })
-
 
 module.exports = router;
