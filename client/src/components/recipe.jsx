@@ -24,7 +24,7 @@ export default function Recipe(params) {
                         <p className="diets">{
                             dietIcons.length > 4 ? 
                             dietIcons.map(Icon => {
-                                return <Icon width={42} height={42} fill={"#dd5d26"} className='diet-icon'/>
+                                return <Icon width={38} height={38} fill={"#dd5d26"} className='diet-icon'/>
                             })
                             : 
                             dietIcons.map(Icon => {
@@ -33,7 +33,7 @@ export default function Recipe(params) {
                         }
                         </p>
                         <div className='spoon-score'>
-                        <Trophy width={40} height={40} className='trophy'/>
+                        <Trophy width={35} height={35} className='trophy'/>
                         <p className='spoon-score-text'>
                             {
                                 healthScore

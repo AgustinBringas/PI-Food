@@ -109,7 +109,7 @@ export default function Home (props) {
                                 <label for={`diet-cb-${index}`}>
                                     {diet.name.toUpperCase()}
                                     {SpecificImg ? 
-                                    <SpecificImg width={32} height={32}/>
+                                    <SpecificImg width={32} height={32} className='diet-icon'/>
                                     : null}
                                 </label>
                             </div>
@@ -153,7 +153,7 @@ export default function Home (props) {
             recipes.length ?
             <div id='recipes' className='recipes-container'>
                 {currentRecipes.map(recipe => {
-                    let dietIcons = recipe.diets.map(diet => components[diet.replace(/\s+/g, '')])
+                    let dietIcons = recipe.diets?.map(diet => components[diet.replace(/\s+/g, '')])
                     return <Recipe recipe={recipe} icons={dietIcons}/>
                 })}
             </div>

@@ -8,20 +8,77 @@
 }
 
 .detail-container {
+    width: 900px;
+    background-color: white;
+    margin-top: 50px;
+
+}
+
+#img {
+    width: 100%;
+    height: 25%;
+    object-fit: cover;
+}
+
+#dishes {
+    text-align: left;
+}
+
+.scores-ul-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.score-cont {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.diets-icons-cont {
+    display: flex;
+}
+
+#summary {
+    text-align: left;
+}
+
+.instruction-container {
+    display: flex;
+    text-align: left;
+}
+
+.instruction-number {
+    margin-right: 9px;
+}
+
+.text-score {
+    color: #a7cb68;
+    font-size: 45px;
+    font-weight: 900;
+    margin-left: 9px;
+}
+
+#corazon {
+    color: #ef7f3f;
+    font-size: 70px;
+}
+
+.remove-recipe-btn {
+    background-color: white;
+    color: black;
+    font-size: 70px;
+    border:none;
+    cursor: pointer;
+}
+/* 
+.detail-container {
     background-color: rgba(255, 255, 255, 0.94);
     width: 70%;
     height: auto;
-    display: grid;
-    grid-template: 
-                    ". title ."  auto
-                    "spScore img diets"  auto
-                    "htScore img dishes"  auto
-                    ". img ."  auto
-                    "summary summary summary"  auto
-                    ". steps ."  auto
-                    ". instructions ."  auto;
+    display: flex;
     align-items: center;
-    grid-template-columns: auto auto auto;
     justify-items: center;
     margin-bottom: 60px;
     margin-top: 60px;
@@ -117,4 +174,4 @@
                     "number info";
     grid-template-columns: 5% 95%;
 
-}
+} */
