@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
-import { addRecipe } from '../store/actions'
+import { useState, useEffect } from 'react'
+import { addRecipe, getDiets } from '../store/actions'
 import './recipeCreate.css'
 import NavBar from './navBar'
 import CookingGuy from '../icons/cookingGuy'
@@ -12,7 +12,6 @@ import { useHistory } from 'react-router'
 export default function RecipeCreate() {
     // Me traigo los tipos de dieta
     let diets = useSelector(state => state.diets)
-    let recipes = useSelector(state => state.recipes)
     const dispatch = useDispatch()
     // Creo un estado local con las cosas del form
     const [input, setInput] = useState({
@@ -47,6 +46,11 @@ export default function RecipeCreate() {
     let history = useHistory()
 
 
+    useEffect(() => {
+        dispatch(getDiets())
+    }, [])
+
+
     // Funcion para agregar pasos visualmente
     function addInput() {
         // Me traigo el form
@@ -79,9 +83,8 @@ export default function RecipeCreate() {
 
     // Funcion para eliminar isntrucciones
     function removeInput(elem) {
-        let form = document.getElementById('form')
         let parent = elem.path[1]
-        let removed = parent.remove()
+        parent.remove()
     }
     
     // Funcion para tomar instrucciones
@@ -119,7 +122,7 @@ export default function RecipeCreate() {
     }
     
     // Handle del submit
-    async function handleSubmit(e){
+    function handleSubmit(e){
         e.preventDefault();
         let checkboxValue = takeCheckboxValues()
         input.diets = checkboxValue
@@ -253,7 +256,7 @@ export default function RecipeCreate() {
                             <div className='form-input' id='anInst0' >
                                 <label className='input-label-create' htmlFor="analyzedInstructions">Step 1</label>
                                 <input type="button" value="-" onClick={e => removeInput(this)} style={{display:"none"}} className='remove-btn'/>
-                                <input className='input-create-instructions' name="analyzedInstructions" type="text" value={input.analyzedInstructions} onChange={handleChange} className="anInstructions"/>
+                                <input name="analyzedInstructions" type="text" value={input.analyzedInstructions} onChange={handleChange} className="anInstructions"/>
                                 <input type="button" value="+" onClick={() => addInput()} className='add-btn'/>
                             </div>
                         </div>

@@ -72,16 +72,9 @@ export default function Home (props) {
         return checkboxValues
     }
 
-    // Toma el valor de los checkbox con la funcion de arriba y filtra con ese array
-    const dietFilter = (e) => {
-        let checkboxValues = takeCheckboxValues()
-        dispatch(filterRecipesByDiets(checkboxValues))
-        handleOrder(e)
-    }
-
     // Filtra por los creado en mi bdd
     const handleFilterCreated = (e) => {
-        dietFilter()
+        handleOrder()
         dispatch(filterCreated(e.target.value))
     }
 
@@ -89,6 +82,8 @@ export default function Home (props) {
     const handleOrder = (e) => {
         let orderBy = document.getElementById('order-by').value
         let orderType = document.getElementById('order-type').value
+        let checkboxValues = takeCheckboxValues()
+        dispatch(filterRecipesByDiets(checkboxValues))
         dispatch(order({orderType: orderType, orderBy: orderBy}))
         setCurrentPage(1)
         setRender(render + 'a')
@@ -109,7 +104,7 @@ export default function Home (props) {
                                 type="checkbox" 
                                 id={`diet-cb-${index}`} 
                                 value={diet.name}
-                                onChange={() => dietFilter()}
+                                onChange={() => handleOrder()}
                                 /> 
                                 <label for={`diet-cb-${index}`}>
                                     {diet.name.toUpperCase()}
@@ -168,13 +163,14 @@ export default function Home (props) {
             </div>
             
             }
-            
+            {recipes.length > 9 ? 
             <Paginado 
             className='paginado'
             recipesPerPage={recipesPerPage}
             allRecipes={recipes.length}
             paginado={paginado}
-            />
+            /> : null}
+            
         </div>
     )
 }

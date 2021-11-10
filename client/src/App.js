@@ -1,11 +1,10 @@
 import './App.css';
-import NavBar from './components/navBar';
 import { Route } from 'react-router';
 import LandingPage from './components/landingPage';
 import Home from './components/home';
 import RecipeDetail from './components/recipeDetail';
 import RecipeCreate from './components/recipeCreate';
-import {BrowserRouter as Router} from 'react-router-dom'
+
 
 function App() {
   return (

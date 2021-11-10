@@ -21,13 +21,13 @@ describe('Recipe routes', () => {
   beforeEach(() => Recipe.sync({ force: true })
     .then(() => Recipe.create(recipe)));
 
-  xdescribe('GET /api/recipes', () => {
+  describe('GET /api/recipes', () => {
     it('should get the recipes with code 200', () =>
       agent.get('/api/recipes').expect(200)
     );
   });
 
-  xdescribe('GET /api/recipes?name=Test', () => {
+  describe('GET /api/recipes?name=Test', () => {
     it('should get the recipes that includes the query with code 200', () =>
       agent.get('/api/recipes?name=Test')
       .expect(200)

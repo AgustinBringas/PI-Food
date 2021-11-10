@@ -5,7 +5,6 @@ import  {GET_RECIPES,
          FILTER_CREATED,
          ORDER,
          ADD_RECIPE,
-         ADD_DIETS_TO_RECIPE,
          CLEAR,
          DELETE_RECIPE } from "../actions"
 

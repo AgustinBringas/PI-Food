@@ -15,7 +15,7 @@ export default function Recipe(params) {
                 <div className="card">
                 <Link to={`/recipe/${id}`} className="link">
                     <div className="img-container">
-                        <img src={image} className="img" alt="Image not found"/>
+                        <img src={image} className="img" alt="Not found"/>
                     </div>
                     <div className="data-container">
                         <h1 className="title">{name.toUpperCase()}</h1>

@@ -29,7 +29,7 @@ export default function RecipeDetail(props) {
             <NavBar search={false}/>
             {!Object.keys(recipeDetail).length ? <LoadingKiwi id='loading' /> :
             <div className="detail-container">
-                <img id='img'src={recipeDetail.image}/>
+                <img id='img'src={recipeDetail.image} alt='No img found.'/>
                 <h1 id='title'>{recipeDetail.name}</h1>
                 <ul id='diets'><b>Diet/s:</b>{recipeDetail.diets?.map(diet => {
                     return <li>{diet.toUpperCase()}</li>
